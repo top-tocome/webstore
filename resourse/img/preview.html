@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>img preview</title>
+    <link rel="stylesheet" href="preview.css">
+    <script src="./preview.js"></script>
+</head>
+
+<body style="background-color:antiquewhite;">
+
+    <div class="background">
+        <div style="height: 100px;">
+            <input type="file" id="files" onchange="fileread()" style="display: none;">
+            <button onclick="javascript:document.getElementById('files').click();">请导入应用目录下的num.txt文件</button>
+            <p>或者手动输入图片数量
+                <input id="input" type="text" value="0"><button onclick="inputnum()">导入</button>
+            </p>
+        </div>
+
+        <div style="text-align:center;" id="numshow"></div>
+
+        <div style="height: 350px;">
+            <div id="buttonleft" class="button">
+                <img src="./button.jpg" width="30px" style="margin-top: 150%;transform:rotate(180deg);"
+                    onclick="preimg()">
+            </div>
+
+            <div class="actionimg" id="actionimg"></div>
+
+            <div id="buttonright" class="button">
+                <img src="./button.jpg" width="30px" style="margin-top: 150%;" onclick="nextimg()">
+            </div>
+        </div>
+
+        <div class="describe"></div>
+    </div>
+
+    <script>
+        var maximg;
+        var now;
+        onload = function () {
+            var action = document.getElementById("actionimg");
+            action.addEventListener("click",
+                function () {
+                    if (action.className == "fullscreen actionimg") {
+                        document.getElementById("actionimg").className = "actionimg";
+                        document.getElementById("buttonleft").className = "button";
+                        document.getElementById("buttonright").className = "button";
+                        document.getElementById("numshow").className = "";
+                    } else {
+                        document.getElementById("actionimg").className = "fullscreen actionimg";
+                        document.getElementById("buttonleft").className = "fullscreenbuttonleft button";
+                        document.getElementById("buttonright").className = "fullscreenbuttonright button";
+                        document.getElementById("numshow").className = "fullscreennumshow";
+                    }
+                })
+        }
+        // function xmlrequest() {
+        //     var xml = new XMLHttpRequest();
+        //     xml.open("GET", "preview.json", true);
+        //     xml.send();
+        //     xml.onloadend = function () {
+        //         var j = JSON.parse(xml.responseText);
+        //         maximg = j.a;
+        //         alert(maximg);
+        //         Init();
+        //     }
+        function Init() {
+            now = 0;
+            var actionimg = document.getElementById("actionimg");
+            for (let i = 0; i < maximg; i++) {
+                createimg(actionimg, "../../temp/" + i + ".jpg")
+            }
+            actionimg.firstChild.style.display = "block";
+            numshow();
+            imgs = actionimg.querySelectorAll("img");
+        }
+    </script>
+</body>
+
+</html>
