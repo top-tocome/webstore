@@ -1,7 +1,10 @@
 package web.binary;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /* 
  * 二进制文件类
@@ -31,5 +34,22 @@ public class Img {
 
     public static void imgpreview() throws Exception {// 打开图片浏览页面
         Runtime.getRuntime().exec("cmd /c " + resourse + "preview.html");
+    }
+    public static void imgpreview2() throws Exception {// 打开图片浏览页面
+        Runtime.getRuntime().exec("cmd /c " + resourse + "preview2.html");
+    }
+
+    public static List<String> toImgArray(String str) {// 将字符串切分为数组
+        List<String> strarr = new ArrayList<String>();
+    
+        Pattern pattern = Pattern.compile("//[^><{}(),;:\'\"]+?\\.(?:jpg|png)");
+        Matcher matcher = pattern.matcher(str);
+        System.out.println("截获的图片：");
+        while (matcher.find()) {
+            strarr.add("http:" + matcher.group());
+            System.out.println("http:" + matcher.group());
+        }
+        System.out.println("长度：" + strarr.size());
+        return strarr;
     }
 }

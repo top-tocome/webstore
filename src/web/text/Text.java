@@ -9,10 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /* 文本文件类
  * 
@@ -50,13 +46,12 @@ public class Text {
         System.out.println("已保存至" + filepath);
     }
 
-    public static void save(InputStream urlstream, File filepath) throws Exception {//override
+    public static void save(InputStream urlstream, File filepath) throws Exception {// override
         save(urlstream, filepath.toString());
     }
 
-    public static String readtxt(String filepath) throws Exception {// 打开文件，返回文件内容字符串
-
-        InputStreamReader reader = new InputStreamReader(new FileInputStream(filepath));
+    public static String readtxt(InputStream stream) throws Exception {// 打开文件，返回文件内容字符串
+        InputStreamReader reader = new InputStreamReader(stream);
         StringBuffer sb = new StringBuffer();
         while (true) {
             int c = reader.read();
@@ -70,50 +65,18 @@ public class Text {
         return sb.toString();
     }
 
-    public static String readtxt(File filepath) throws Exception {//override
-        return readtxt(filepath.toString());
+    public static String readtxt(File filepath) throws Exception {// override
+        return readtxt(new FileInputStream(filepath));
+    }
+
+    public static String readtxt(String filepath) throws Exception {// override
+        return readtxt(new FileInputStream(filepath));
     }
 
     public static void writetxt(String filepath, String content, boolean append) throws Exception {// 写content到filepath中
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filepath, append)));
         writer.write(content);
         writer.close();
-    }
-
-    public static String getapi(File f, String apiname) throws Exception {
-
-        String filecontent = readtxt(f);
-        int start = filecontent.indexOf(apiname);
-        System.out.println("strat:" + start);
-        int end = filecontent.indexOf("]", start);
-        System.out.println("end:" + end);
-        // filecontent = filecontent.substring(filecontent.indexOf("//"),
-        // filecontent.indexOf("?var=desc"));
-
-        // Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler https:" +
-        // filecontent);
-        if (start != -1 && end != -1) {
-            filecontent = filecontent.substring(start, end);
-            System.out.println("已获取api：" + filecontent);
-        } else {
-            System.out.println("获取失败");
-        }
-
-        return filecontent;
-    }
-
-    public static List<String> toImgArray(String str) {// 将字符串切分为数组
-        List<String> strarr = new ArrayList<String>();
-
-        Pattern pattern = Pattern.compile("(?://|\\\\/\\\\/)[^><{},:]+?\\.(?:jpg|png)");
-        Matcher matcher = pattern.matcher(str);
-        System.out.println("截获的图片：");
-        while (matcher.find()) {
-            strarr.add("http:" + matcher.group());
-            System.out.println("http:" + matcher.group());
-        }
-        System.out.println("长度：" + strarr.size());
-        return strarr;
     }
 
 }

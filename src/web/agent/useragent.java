@@ -3,8 +3,6 @@ package web.agent;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import web.text.Text;
-
 /*
  * 设置用户浏览器代理
  * 打开代理提示页面
@@ -16,10 +14,10 @@ public class useragent {// 获取用户浏览器代理
     public final static String resourse = "resourse\\agent\\";
 
     public static HttpURLConnection setagent(URL site) throws Exception {// 设置用户浏览器代理
-        if (agent == null) {
-            getagent();
-            agent = Text.input("请输入浏览器代理:");
-        }
+        // if (agent == null) {
+        //     getagent();
+        //     agent = Text.input("请输入浏览器代理:");
+        // }
         HttpURLConnection connect = (HttpURLConnection) site.openConnection();
         connect.setRequestMethod("GET");
         connect.setRequestProperty("User-Agent", agent);

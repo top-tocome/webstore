@@ -1,1 +1,2 @@
-var maximg =18
+var actimg =5;
+var descimg =11;
