@@ -1,4 +1,4 @@
-package web.text;
+package top.tocome.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

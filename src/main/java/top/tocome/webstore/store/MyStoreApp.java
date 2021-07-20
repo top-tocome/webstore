@@ -1,4 +1,4 @@
-package web.store;
+package top.tocome.webstore.store;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import web.binary.Img;
-import web.text.Text;
+import top.tocome.io.*;
+
 /**
  * 我的商城
  * 
@@ -28,14 +28,14 @@ public class MyStoreApp {
                     break;
                 }
                 if (in.matches(".+//item.taobao.com.+")) {
-                    String page = getpage(html, in);
-                    goods(page, taobao);
+                    String page = Mystore.getpage(html, in);
+                    Mystore.goods(page, taobao);
                 } else if (in.matches(".+//detail.tmall.com.+")) {
-                    String page = getpage(html, in);
-                    goods(page, tmall);
+                    String page = Mystore.getpage(html, in);
+                    Mystore.goods(page, tmall);
                 } else if (in.matches(".+//item.jd.com.+")) {
-                    String page = getpage(html, in);
-                    goods(page, jd);
+                    String page = Mystore.getpage(html, in);
+                    Mystore.goods(page, jd);
                 } else {
                     System.out.println("不支持的网页");
                 }
@@ -45,8 +45,21 @@ public class MyStoreApp {
             }
         }
     }
+}
 
-    private static void goods(String page, Store store) throws Exception {//获取商品主要图片
+/**
+ * Mystore
+ */
+class Mystore {
+
+    public static String getpage(File html, String in) throws MalformedURLException, Exception, IOException {// 获取商品页面源码
+        URL site = new URL(in);// 将输入转为url
+        Text.save(site.openStream(), html);
+        String page = Text.readtxt(html);
+        return page;
+    }
+
+    public static void goods(String page, Store store) throws Exception {// 获取商品主要图片
         String actimg = store.getactimg(page);
         List<String> arr = Img.toImgArray(actimg);
         Img.downloadall(arr, "temp\\a");
@@ -60,12 +73,5 @@ public class MyStoreApp {
         Text.writetxt(Img.resourse + "setting.js", content, true);
 
         Img.imgpreview2();
-    }
-
-    private static String getpage(File html, String in) throws MalformedURLException, Exception, IOException {//获取商品页面源码
-        URL site = new URL(in);// 将输入转为url
-        Text.save(site.openStream(), html);
-        String page = Text.readtxt(html);
-        return page;
     }
 }

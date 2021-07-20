@@ -1,4 +1,4 @@
-package web.binary;
+package top.tocome.io;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class Img {
         Matcher matcher = pattern.matcher(str);
         System.out.println("截获的图片：");
         while (matcher.find()) {
-            strarr.add("http:" + matcher.group());
+            strarr.add("https:" + matcher.group());
             System.out.println("http:" + matcher.group());
         }
         System.out.println("长度：" + strarr.size());

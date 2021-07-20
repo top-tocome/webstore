@@ -1,8 +1,8 @@
-package web.store;
+package top.tocome.webstore.store;
 
 import java.net.URL;
 
-import web.text.Text;
+import top.tocome.io.*;
 
 /**
  * 京东商品详情页  //item.jd.com 

@@ -1,4 +1,4 @@
-package web.binary;
+package top.tocome.io;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

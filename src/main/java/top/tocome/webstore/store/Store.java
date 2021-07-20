@@ -1,4 +1,4 @@
-package web.store;
+package top.tocome.webstore.store;
 
 public interface Store {
 
