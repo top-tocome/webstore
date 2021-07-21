@@ -1,0 +1,3 @@
+[submodule "io-stream"]
+	path = io-stream
+	url = https://github.com/top-tocome/io-stream.git
