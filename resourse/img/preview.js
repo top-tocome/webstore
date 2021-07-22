@@ -5,7 +5,7 @@ function Init() {
     now = 0;
     var actionimg = document.getElementById("actionimg");
     for (let i = 0; i < maximg; i++) {
-        createimg(actionimg, "../../temp/" + i + ".jpg")
+        createimg(actionimg, "../temp/" + i + ".jpg")
     }
     actionimg.firstChild.style.display = "block";
     numshow();
