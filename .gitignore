@@ -2,11 +2,9 @@
 .vscode
 .idea
 *.iml
+.gradle
 #bulid
 out
-
+build
 #run
 temp
-#lib
-*.bat
-*.jar
