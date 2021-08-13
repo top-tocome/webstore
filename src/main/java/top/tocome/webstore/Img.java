@@ -13,35 +13,44 @@ import java.util.regex.Pattern;
  */
 
 public class Img {
-    public final static String path = Data.dataPath + "/img";
 
-    public static void downloadAll(ArrayList<String> arr, String filePath) {// 下载arr中所有图片url到本地文件夹filepath中
-
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println("下载中...第" + (i + 1) + "/" + arr.size() + "张");
-            if (!Http.download(arr.get(i), filePath + "/" + i + ".jpg"/* format */, false)) {
-                arr.remove(i--);
+    /**
+     * 下载所有图片到本地
+     *
+     * @param imageUrls     图片链接数组
+     * @param directoryPath 保存文件的目录
+     */
+    public static void downloadAll(ArrayList<String> imageUrls, String directoryPath) {
+        for (int i = 0; i < imageUrls.size(); i++) {
+            System.out.println("下载中...第" + (i + 1) + "/" + imageUrls.size() + "张");
+            if (!Http.download(imageUrls.get(i), directoryPath + "/" + i + ".jpg"/* format */)) {
+                imageUrls.remove(i--);
                 System.out.println("下载错误");
             }
         }
-        System.out.println("下载完成共" + arr.size() + "张");
+        System.out.println("下载完成共" + imageUrls.size() + "张");
     }
 
     public static void imgPreview() throws Exception {// 打开图片浏览页面
         Runtime.getRuntime().exec("cmd /c " + Data.dataPath.replaceAll("/", "\\\\") + "\\img\\preview.html");
     }
 
-    public static ArrayList<String> toImgArray(String str) {// 将字符串切分为数组
-        ArrayList<String> arr = new ArrayList<>();
-
+    /**
+     * 从字符串中截取图片链接
+     *
+     * @param str 字符串
+     * @return 图片链接列表
+     */
+    public static ArrayList<String> toImgArray(String str) {
+        ArrayList<String> imageUrls = new ArrayList<>();
         Pattern pattern = Pattern.compile("//[^><{}(),;:'\"]+?\\.(?:jpg|png)");
         Matcher matcher = pattern.matcher(str);
         System.out.println("截获的图片：");
         while (matcher.find()) {
-            arr.add("https:" + matcher.group());
-            System.out.println("http:" + matcher.group());
+            imageUrls.add("https:" + matcher.group());
+            System.out.println("https:" + matcher.group());
         }
-        System.out.println("长度：" + arr.size());
-        return arr;
+        System.out.println("图片数量：" + imageUrls.size());
+        return imageUrls;
     }
 }
