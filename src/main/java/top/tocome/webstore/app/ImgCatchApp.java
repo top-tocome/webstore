@@ -6,7 +6,7 @@ import top.tocome.io.File;
 import top.tocome.io.Http;
 import top.tocome.io.Stream;
 import top.tocome.webstore.Data;
-import top.tocome.webstore.Img;
+import top.tocome.webstore.utils.Img;
 
 public class ImgCatchApp {
     public static void main(String[] args) {

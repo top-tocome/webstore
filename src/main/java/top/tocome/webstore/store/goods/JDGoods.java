@@ -13,12 +13,11 @@ package top.tocome.webstore.store.goods;
 public class JDGoods extends Goods {
 
     public JDGoods(String url) {
-        super(url, "imageList:", "desc:", "'");
+        super(url, "imageList:", "]", "desc:", "'");
     }
 
     @Override
-    protected void getActionData() {
-        super.getActionData();
-        actionData = actionData.replaceAll("jfs", "//img10.360buyimg.com/imgzone/jfs");
+    public String getActionData() {
+        return super.getActionData().replaceAll("jfs", "//img10.360buyimg.com/imgzone/jfs");
     }
 }

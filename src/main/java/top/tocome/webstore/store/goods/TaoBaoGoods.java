@@ -11,6 +11,6 @@ package top.tocome.webstore.store.goods;
 public class TaoBaoGoods extends Goods {
 
     public TaoBaoGoods(String url) {
-        super(url, "auctionImages", "descUrl", "'");
+        super(url, "auctionImages", "]","descUrl", "'");
     }
 }

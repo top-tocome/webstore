@@ -7,6 +7,6 @@ package top.tocome.webstore.store.goods;
 public class TMallGoods extends Goods {
 
     public TMallGoods(String url) {
-        super(url, "\"default\":", "\"descUrl\":", "\"");
+        super(url, "\"default\":", "]","\"descUrl\":", "\"");
     }
 }
