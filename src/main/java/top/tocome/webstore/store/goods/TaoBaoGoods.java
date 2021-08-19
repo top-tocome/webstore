@@ -9,8 +9,9 @@ package top.tocome.webstore.store.goods;
  * _430x430.jpg:图片大小430x430（选填，不填为原图大小）
  */
 public class TaoBaoGoods extends Goods {
+    public static final String head = "//item.taobao.com";
 
     public TaoBaoGoods(String url) {
-        super(url, "auctionImages", "]","descUrl", "'");
+        super(url, "auctionImages", "]", "descUrl", "'");
     }
 }

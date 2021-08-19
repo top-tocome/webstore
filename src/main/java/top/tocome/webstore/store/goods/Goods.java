@@ -109,4 +109,14 @@ public abstract class Goods {
         }
         return descImages;
     }
+
+    public static Goods newGoods(String url) {
+        if (url.contains(JDGoods.head))
+            return new JDGoods(url);
+        else if (url.contains(TaoBaoGoods.head))
+            return new TaoBaoGoods(url);
+        else if (url.contains(TMallGoods.head))
+            return new TMallGoods(url);
+        return null;
+    }
 }

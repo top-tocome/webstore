@@ -5,8 +5,9 @@ package top.tocome.webstore.store.goods;
  * 天猫图片api格式：同淘宝
  */
 public class TMallGoods extends Goods {
+    public static final String head = "//detail.tmall.com";
 
     public TMallGoods(String url) {
-        super(url, "\"default\":", "]","\"descUrl\":", "\"");
+        super(url, "\"default\":", "]", "\"descUrl\":", "\"");
     }
 }

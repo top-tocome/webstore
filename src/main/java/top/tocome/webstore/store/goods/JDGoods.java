@@ -11,6 +11,7 @@ package top.tocome.webstore.store.goods;
  * !cc_300x500.jpg:裁剪图片（选填）
  */
 public class JDGoods extends Goods {
+    public static final String head = "//item.jd.com";
 
     public JDGoods(String url) {
         super(url, "imageList:", "]", "desc:", "'");
