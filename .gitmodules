@@ -1,3 +1,3 @@
-[submodule "io-stream"]
-	path = io-stream
-	url = https://github.com/top-tocome/io-stream.git
+[submodule "commonly-used-tools"]
+	path = commonly-used-tools
+	url = https://github.com/top-tocome/commonly-used-tools.git
