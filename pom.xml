@@ -6,15 +6,26 @@
 
     <groupId>top.tocome</groupId>
     <artifactId>webstore</artifactId>
-    <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.0.1-dev</version>
 
-    <modules>
-        <module>commonly-used-tools</module>
-    </modules>
+    <packaging>jar</packaging>
+    <name>webstore</name>
+    <description>A webstore spider</description>
+    <url>https://github.com/top-tocome/webstore</url>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/top-tocome/webstore</url>
+        <connection>scm:https://github.com/top-tocome/webstore.git</connection>
+    </scm>
 
     <properties>
-        <javadoc.skip>false</javadoc.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -24,7 +35,7 @@
         <dependency>
             <groupId>top.tocome</groupId>
             <artifactId>commonly-used-tools</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.1-dev</version>
         </dependency>
     </dependencies>
 </project>
